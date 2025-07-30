@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>Debts List</title>
+</head>
+<body>
+    {% include 'base.html' %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Debts</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for debt in debts %}
+                <tr>
+                    <td>{{ debt.id }}</td>
+                    <td>{{ debt.amount }}</td>
+                    <td>{{ debt.description }}</td>
+                    <td>{{ debt.due_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('add_debt') }}" class="btn btn-primary">Add New Debt</a>
+    </div>
+</body>
+</html>
